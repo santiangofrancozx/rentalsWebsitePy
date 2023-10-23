@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler de Autos</title>
+    <!-- Incluye el archivo de estilo de Tailwind CSS o utiliza un CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-500 p-4 text-white">
+        <h1 class="text-4xl font-bold text-center">Rentals - Catálogo de Autos</h1>
+        <!-- Resto de tu encabezado -->
+    </header>
+
+    <section id="resultado" class="container mx-auto my-8">
+        <h2 class="text-3xl font-semibold text-center my-4">Resultados de la consulta</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% if array and fecha1 and fecha2 %}
+                {% for vehicle in array %}
+                <a href="{% url 'infocarTime' vehicle.id fecha1 fecha2 %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    <div class="bg-white rounded-lg shadow-md p-4" >
+                        <h3 class="text-xl font-semibold">{{ vehicle.brand }} - {{ vehicle.model }}</h3>
+                        <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
+                        <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
+                        <p class="text-gray-600 my-2">Disponibilidad: {{ vehicle.availability }}</p>
+                        <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            {% elif array %}
+            {% for vehicle in array %}
+            <a href="{% url 'infocar' vehicle.id %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                <div class="bg-white rounded-lg shadow-md p-4" >
+                    <h3 class="text-xl font-semibold">{{ vehicle.brand }} - {{ vehicle.model }}</h3>
+                    <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
+                    <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
+                    <p class="text-gray-600 my-2">Disponibilidad: {{ vehicle.availability }}</p>
+                    <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
+                </div>
+            </a>
+            {% endfor %}
+            {% else %}
+                <p class="text-center my-4">No se encontraron resultados.</p>    
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Resto de tu código HTML -->
+
+    <footer class="bg-blue-500 p-4 text-white text-center">
+        <p class="text-sm">&copy; 2023 Alquiler de Autos XYZ. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

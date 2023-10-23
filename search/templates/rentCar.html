@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Auto a Rentar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    {% if vehicle and fecha1 and fecha2 %}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md p-6">
+                <h1 class="text-3xl font-extrabold text-gray-900">{{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.year }}</h1>
+                <div class="mt-4">
+                    <img src="https://via.placeholder.com/400" alt="Imagen de prueba" class="mb-4">
+                    <p class="text-lg text-gray-700">El {{ vehicle.brand }} {{ vehicle.model }} es un automóvil compacto que se ha convertido en uno de los modelos más vendidos en el mundo.</p>
+                </div>
+                <div class="mt-4">
+                    <p class="text-xl font-bold text-gray-900">Características:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>Modelo: {{ vehicle.model }}</li>
+                        <li>Año: {{ vehicle.year }}</li> 
+                        <li>Tipo: Sedán</li>
+                        <li>Disponibilidad: {{ vehicle.availability }}</li>
+                        <li>Ubicación: {{ vehicle.location }}</li>
+                    </ul>
+                </div>
+                <div class="mt-4 flex justify-between">
+                    <p class="text-2xl font-bold text-gray-900">{{ vehicle.price }}</p>
+                    <a href="{% url 'rentCarTime' vehicle.id fecha1 fecha2  %}">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Rentar Ahora
+                        </button>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    {% elif vehicle %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-3xl font-extrabold text-gray-900">{{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.year }}</h1>
+            <div class="mt-4">
+                <img src="https://via.placeholder.com/400" alt="Imagen de prueba" class="mb-4">
+                <p class="text-lg text-gray-700">El {{ vehicle.brand }} {{ vehicle.model }} es un automóvil compacto que se ha convertido en uno de los modelos más vendidos en el mundo.</p>
+            </div>
+            <div class="mt-4">
+                <p class="text-xl font-bold text-gray-900">Características:</p>
+                <ul class="list-disc list-inside text-gray-700">
+                    <li>Modelo: {{ vehicle.model }}</li>
+                    <li>Año: {{ vehicle.year }}</li> 
+                    <li>Tipo: Sedán</li>
+                    <li>Disponibilidad: {{ vehicle.availability }}</li>
+                    <li>Ubicación: {{ vehicle.location }}</li>
+                </ul>
+            </div>
+            <div class="mt-4 flex justify-between">
+                <p class="text-2xl font-bold text-gray-900">{{ vehicle.price }}</p>
+                <a href="{% url 'rentCar' vehicle.id %}">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Rentar Ahora
+                    </button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</body>
+</html>

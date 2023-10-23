@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Renta</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-3xl font-extrabold text-gray-900">Detalles de la Renta</h1>
+            <p class="text-lg text-gray-700">Rentaste el auto: <span class="font-bold">{{ vehicle_id }}</span></p>
+            <p class="text-lg text-gray-700">Fecha de Recogida: <span class="font-bold">{{ array1 }}</span></p>
+            <p class="text-lg text-gray-700">Fecha de Entrega: <span class="font-bold">{{ array2 }}</span></p>
+            <p class="text-lg text-gray-700">Días: <span class="font-bold">{{ days }}</span></p>
+            <p class="text-lg text-gray-700">Precio por Día: <span class="font-bold">{{ price_per_day }}</span></p>
+            <p class="text-lg text-gray-700">Precio Total: <span class="font-bold">{{ price_total }}</span></p>
+            <p class="text-lg text-gray-700">Cliente: <span class="font-bold">{{ user }}</span></p>
+        </div>
+    </div>
+</body>
+</html>
