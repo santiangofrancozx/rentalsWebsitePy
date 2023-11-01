@@ -144,7 +144,7 @@ def rentFinal(request, vehicle_id, array1, array2):
         'vehicle_id': vehicle_id,
         'array1': formatted_array1,
         'array2': formatted_array2,
-        'days': days,
+        'days': days, 
         'price_per_day': price_per_day,
         'price_total': price_total,
         'user': user_id,

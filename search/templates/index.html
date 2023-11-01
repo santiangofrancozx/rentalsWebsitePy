@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquiler de Autos</title>
-    <!-- Incluye el archivo de estilo de Tailwind CSS o utiliza un CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex flex-col h-screen justify-between">
@@ -20,7 +19,7 @@
                 <li><a href="{% url "singout" %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url "singin" %}">Login</a></li>
-                <li><a {% url "singup" %}>Singup</a></li>
+                <li><a href={% url "singup" %}>Singup</a></li>
                 {% endif %}
             </ul>
         </nav>
