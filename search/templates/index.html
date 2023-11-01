@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alquiler de Autos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var dd2 = String(today.getDate()+1).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+            var yyyy = today.getFullYear();
+    
+            today = yyyy + '-' + mm + '-' + dd;
+            today2 = yyyy + '-' + mm + '-' + dd2;
+            document.getElementById("fechaRecogida").setAttribute("min", today);
+    
+            var maxDate = new Date();
+            maxDate.setMonth(maxDate.getMonth() + 3);
+            var dd = String(maxDate.getDate()).padStart(2, '0');
+            var mm = String(maxDate.getMonth() + 1).padStart(2, '0');
+            var yyyy = maxDate.getFullYear();
+    
+            maxDate = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("fechaEntrega").setAttribute("max", maxDate);
+            document.getElementById("fechaEntrega").setAttribute("min", today2);
+        });
+    </script>
 </head>
 <body class="flex flex-col h-screen justify-between">
     <header class="bg-blue-500 p-4 text-white">
@@ -44,7 +67,7 @@
                 <label for="fechaRecogida" class="block font-semibold">Fecha de Recogida:</label>
                 <input type="date" id="fechaRecogida" name="fechaRecogida" class="w-full py-2 px-3 border rounded focus:outline-none focus:ring focus:border-blue-300" required>
             </div>
-
+            
             <div class="mb-4">
                 <label for="fechaEntrega" class="block font-semibold">Fecha de Entrega:</label>
                 <input type="date" id="fechaEntrega" name="fechaEntrega" class="w-full py-2 px-3 border rounded focus:outline-none focus:ring focus:border-blue-300" required>
