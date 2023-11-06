@@ -12,6 +12,7 @@ class Vehicle(models.Model):
     availability = models.BooleanField()
     location = models.CharField(max_length=255)
     price = models.IntegerField()
+    img = models.ImageField(upload_to='img')  # upload_to especifica la carpeta donde se guardarán las imágenes
 
     def __str__(self):
         return self.model

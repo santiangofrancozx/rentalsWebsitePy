@@ -18,27 +18,31 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {% if array and fecha1 and fecha2 %}
                 {% for vehicle in array %}
-                <a href="{% url 'infocarTime' vehicle.id fecha1 fecha2 %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                    <div class="bg-white rounded-lg shadow-md p-4" >
+                <a href="{% url 'infocar' vehicle.id %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 max-w-100 max-h-100">
+                    <div class="h-full w-full bg-white rounded-lg shadow-md p-4">
                         <h3 class="text-xl font-semibold">{{ vehicle.brand }} - {{ vehicle.model }}</h3>
+                        <img src="{{ vehicle.img.url }}" alt="Imagen de prueba" class="bg-opacity-0 h-auto">
                         <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
                         <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
                         <p class="text-gray-600 my-2">Disponibilidad: {{ vehicle.availability }}</p>
                         <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
                     </div>
                 </a>
+                 
                 {% endfor %}
             {% elif array %}
             {% for vehicle in array %}
-            <a href="{% url 'infocar' vehicle.id %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
-                <div class="bg-white rounded-lg shadow-md p-4" >
+            <a href="{% url 'infocar' vehicle.id %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 max-w-100 max-h-100">
+                <div class="h-full w-full bg-white rounded-lg shadow-md p-4">
                     <h3 class="text-xl font-semibold">{{ vehicle.brand }} - {{ vehicle.model }}</h3>
+                    <img src="{{ vehicle.img.url }}" alt="Imagen de prueba" class="bg-opacity-0 h-auto">
                     <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
                     <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
                     <p class="text-gray-600 my-2">Disponibilidad: {{ vehicle.availability }}</p>
                     <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
                 </div>
             </a>
+                           
             {% endfor %}
             {% else %}
                 <p class="text-center my-4">No se encontraron resultados.</p>    

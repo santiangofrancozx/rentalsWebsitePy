@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from . import views
 from .models import Vehicle
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.searchApp, name="searches"),
@@ -14,4 +16,4 @@ urlpatterns = [
     path("singout/", views.singout, name="singout"),
     path("rentNow/", views.rentNow, name="rentNow"),
     path("thanks/<int:vehicle_id>/<str:array1>/<str:array2>/>", views.rentFinal, name="thanksForRent")
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

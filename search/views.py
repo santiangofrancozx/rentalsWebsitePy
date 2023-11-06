@@ -42,6 +42,7 @@ def infocar(request, vehicle_id):
 ## Infocar recibe el id y las fechas de renta y permite mostrar la informacion de un auto y
 def infocarTimes(request, vehicle_id, array1, array2):
     vehicleQuery = Vehicle.objects.get(id=vehicle_id)
+    print(f"imagen de retorno: {vehicleQuery.img.url}")
     return render(request, "rentCar.html", {
         'vehicle':vehicleQuery,
         'fecha1': array1,
@@ -51,10 +52,11 @@ def infocarTimes(request, vehicle_id, array1, array2):
 
 def rentCar(request, vehicle_id):
     if request.user.is_authenticated:
+        print(f"imagen de retorno: {Vehicle.objects.get(id=vehicle_id).img.url}")
         return render(request, "rent.html", {
             "car": Vehicle.objects.get(id=vehicle_id)
-
             })
+    
     else:
         return redirect("singin")
     

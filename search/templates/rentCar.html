@@ -12,7 +12,7 @@
             <div class="max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md p-6">
                 <h1 class="text-3xl font-extrabold text-gray-900">{{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.year }}</h1>
                 <div class="mt-4">
-                    <img src="https://via.placeholder.com/400" alt="Imagen de prueba" class="mb-4">
+                    <img src= "{{ vehicle.img.url }}" alt="Imagen de prueba" class="mb-4">
                     <p class="text-lg text-gray-700">El {{ vehicle.brand }} {{ vehicle.model }} es un automóvil compacto que se ha convertido en uno de los modelos más vendidos en el mundo.</p>
                 </div>
                 <div class="mt-4">
@@ -26,7 +26,7 @@
                     </ul>
                 </div>
                 <div class="mt-4 flex justify-between">
-                    <p class="text-2xl font-bold text-gray-900">{{ vehicle.price }}</p>
+                    <p class="text-2xl font-bold text-gray-900">Price: {{ vehicle.price }}</p>
                     <a href="{% url 'rentCarTime' vehicle.id fecha1 fecha2  %}">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Rentar Ahora
@@ -41,7 +41,7 @@
         <div class="max-w-3xl mx-auto my-8 bg-white rounded-lg shadow-md p-6">
             <h1 class="text-3xl font-extrabold text-gray-900">{{ vehicle.brand }} {{ vehicle.model }} {{ vehicle.year }}</h1>
             <div class="mt-4">
-                <img src="https://via.placeholder.com/400" alt="Imagen de prueba" class="mb-4">
+                <img src="{{ vehicle.img.url }}" alt="Imagen de prueba" class="mb-4">
                 <p class="text-lg text-gray-700">El {{ vehicle.brand }} {{ vehicle.model }} es un automóvil compacto que se ha convertido en uno de los modelos más vendidos en el mundo.</p>
             </div>
             <div class="mt-4">
