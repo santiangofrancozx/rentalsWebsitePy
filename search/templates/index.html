@@ -36,8 +36,8 @@
         <nav>
             <ul class="flex space-x-4 justify-center">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#reserva">Reservar</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="{% url "reservar" %}">Reservar</a></li>
+                <li><a href="{% url "contacto" %}">Contacto</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url "singout" %}">Logout</a></li>
                 {% else %}

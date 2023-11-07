@@ -104,6 +104,18 @@ def signup(request):
             return HttpResponse('exito al crear usuario')
         except:
             return HttpResponse("algo salio mal")
+        
+
+def reservar(request):
+    if request.method == 'GET':
+        return render(request, 'reservar.html')
+   
+
+
+def contacto(request):
+    if request.method == 'GET':
+        return render(request, 'contacto.html')
+
 
 @login_required
 def singout(request):
