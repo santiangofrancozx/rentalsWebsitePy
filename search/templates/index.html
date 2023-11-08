@@ -31,22 +31,46 @@
     </script>
 </head>
 <body class="flex flex-col h-screen justify-between">
-    <header class="bg-blue-500 p-4 text-white">
-        <h1 class="text-4xl font-bold text-center">Rentals</h1>
-        <nav>
-            <ul class="flex space-x-4 justify-center">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="{% url "reservar" %}">Reservar</a></li>
-                <li><a href="{% url "contacto" %}">Contacto</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url "singout" %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url "singin" %}">Login</a></li>
-                <li><a href={% url "singup" %}>Singup</a></li>
-                {% endif %}
-            </ul>
+    <header class="bg-blue-500 p-4 text-white flex flex-col items-center">
+        {% if user.is_authenticated %}
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".group").addEventListener("click", function() {
+              this.querySelector(".absolute").classList.toggle("hidden");
+            });
+          });
+        </script>
+        <nav class="flex items-center justify-between p-4 text-white w-full">
+            <h1 class="text-4xl font-bold">Rentals</h1>
+            <div class="relative group">
+            <button class="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300">
+              Usuario
+              <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute hidden group-hover:block mt-2 py-2 w-48 bg-white rounded-lg shadow-lg right-0">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cuenta</a>
+              <a href="{% url "reservar" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mis reservas</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cartera</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Opiniones</a>
+              <a href="{% url "singout" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cerrar sesión</a>
+            </div>
+          </div>
         </nav>
-    </header>
+        {% else %}
+        <nav class="flex items-center justify-between p-4 text-white w-full">
+          <h1 class="text-4xl font-bold">Rentals</h1>
+          <ul class="flex space-x-4 justify-center">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="{% url 'reservar' %}">Reservar</a></li>
+            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            <li><a href="{% url 'singin' %}">Login</a></li>
+            <li><a href="{% url 'singup' %}">Singup</a></li>
+          </ul>
+        </nav>
+        {% endif %}
+    </header>  
 
     <section id="inicio" class="bg-gray-100 py-8 text-center flex-1">
         <h2 class="text-3xl font-semibold">Bienvenido a Rentals alquiler de autos</h2>
