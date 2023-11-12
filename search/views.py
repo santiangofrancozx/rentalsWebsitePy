@@ -97,6 +97,7 @@ def signup(request):
         return render(request, 'singup.html')
     else:
         try:
+            print(request.POST)
             user = User.objects.create_user(
                 request.POST["email"], password=request.POST["password"])
             user.save()
