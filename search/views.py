@@ -99,7 +99,11 @@ def signup(request):
         try:
             print(request.POST)
             user = User.objects.create_user(
-                request.POST["email"], password=request.POST["password"])
+                request.POST["username"],
+                password = request.POST["password"], 
+                first_name = request.POST["name"], 
+                last_name = request.POST["lastname"],
+                email = request.POST["email"])
             user.save()
             login(request, user)
             return HttpResponse('exito al crear usuario')
@@ -116,6 +120,8 @@ def reservar(request):
 def contacto(request):
     if request.method == 'GET':
         return render(request, 'contacto.html')
+
+
 
 
 @login_required
