@@ -86,7 +86,7 @@ def signin(request):
         return render(request, 'login.html')
     else:
         user = authenticate(
-            request, username=request.POST['email'], password=request.POST['password'])
+            request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
             return HttpResponse("Error al logear no melo")
         login(request, user)
@@ -106,7 +106,7 @@ def signup(request):
                 email = request.POST["email"])
             user.save()
             login(request, user)
-            return HttpResponse('exito al crear usuario')
+            return redirect('/')
         except:
             return HttpResponse("algo salio mal")
         
