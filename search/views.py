@@ -135,11 +135,15 @@ def editUserInfo (request):
          user_id = request.user.id  
          user = User.objects.get(id=user_id)
         
-         new_username = request.POST['newUsername']
-         new_email = request.POST['newEmail']
-         new_password = request.POST['newPassword']
+         new_username = request.POST['newUsername'] # nombre de usuario
+         new_firstname= request.POST['newName'] # nombre
+         new_Lastname= request.POST['newLastname'] # apellido
+         new_email = request.POST['newEmail'] # email
+         new_password = request.POST['newPassword'] # contra
         
          user.username = new_username
+         user.first_name = new_firstname
+         user.last_name = new_Lastname
          user.email = new_email
          user.set_password(new_password)  
          user.save()
