@@ -85,12 +85,17 @@ def signin(request):
     if request.method == 'GET':
         return render(request, 'login.html')
     else:
-        user = authenticate(
+        try:
+         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
-            return HttpResponse("Error al logear no melo")
-        login(request, user)
-        return redirect('/')
+         if user is None:
+            return HttpResponse("Revisa que tus credenciales esten correctas")
+         login(request, user)
+         return redirect('/')
+        except Exception as e:
+                return HttpResponse(f"Error al logearse: {str(e)}")
+
+
 
 def signup(request):
     if request.method == 'GET':
@@ -107,9 +112,8 @@ def signup(request):
             user.save()
             login(request, user)
             return redirect('/')
-        except:
-            return HttpResponse("algo salio mal")
-        
+        except Exception as e:
+                return HttpResponse(f"Error al registrar el usuario: {str(e)}")
 
 def reservar(request):
     if request.method == 'GET':
@@ -120,6 +124,8 @@ def reservar(request):
 def contacto(request):
     if request.method == 'GET':
         return render(request, 'contacto.html')
+   
+
 
 
 
