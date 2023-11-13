@@ -52,6 +52,16 @@
                     <li>Tipo: Sedán</li>
                     <li>Disponibilidad: {{ vehicle.availability }}</li>
                     <li>Ubicación: {{ vehicle.location }}</li>
+
+                    {%if vehicle.air %}
+                    <li>Aire acondicionado: Si</li>
+                    {% else %}
+                    <li>Aire acondicionado: No</li>
+                    {% endif %}
+
+                    <li>Kilometraje: {{ vehicle.kilometers }}</li>
+                    <li>Tipo de transmision: {{ vehicle.transmission }}</li>
+                    <li>Numero de puertas: {{ vehicle.doors }}</li>
                 </ul>
             </div>
             <div class="mt-4 flex justify-between">
