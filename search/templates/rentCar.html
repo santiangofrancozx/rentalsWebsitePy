@@ -21,7 +21,11 @@
                         <li>Modelo: {{ vehicle.model }}</li>
                         <li>Año: {{ vehicle.year }}</li> 
                         <li>Tipo: Sedán</li>
-                        <li>Disponibilidad: {{ vehicle.availability }}</li>
+                        {%if vehicle.availability %}
+                        <li>Disponibilidad: Si</li>
+                        {% else %}
+                        <li>Disponible: No</li>
+                        {% endif %}
                         <li>Ubicación: {{ vehicle.location }}</li>
                     </ul>
                 </div>
@@ -50,7 +54,11 @@
                     <li>Modelo: {{ vehicle.model }}</li>
                     <li>Año: {{ vehicle.year }}</li> 
                     <li>Tipo: Sedán</li>
-                    <li>Disponibilidad: {{ vehicle.availability }}</li>
+                    {%if vehicle.availability %}
+                    <li>Disponibilidad: Si</li>
+                    {% else %}
+                    <li>Disponible: No</li>
+                    {% endif %}
                     <li>Ubicación: {{ vehicle.location }}</li>
 
                     {%if vehicle.air %}

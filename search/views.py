@@ -51,14 +51,14 @@ def infocarTimes(request, vehicle_id, array1, array2):
 
 
 def rentCar(request, vehicle_id):
-    if request.user.is_authenticated:
+     if request.user.is_authenticated:
         print(f"imagen de retorno: {Vehicle.objects.get(id=vehicle_id).img.url}")
         return render(request, "rent.html", {
             "car": Vehicle.objects.get(id=vehicle_id)
             })
-    
-    else:
+     else:
         return redirect("singin")
+     
     
 def rentCarTime(request, vehicle_id, array1, array2):
     fecha1_int = [int(item) for item in array1.strip('[]').split(', ')]
