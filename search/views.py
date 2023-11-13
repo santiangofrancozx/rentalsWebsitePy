@@ -51,12 +51,12 @@ def infocarTimes(request, vehicle_id, array1, array2):
 
 
 def rentCar(request, vehicle_id):
-     if request.user.is_authenticated:
+    if request.user.is_authenticated:
         print(f"imagen de retorno: {Vehicle.objects.get(id=vehicle_id).img.url}")
         return render(request, "rent.html", {
             "car": Vehicle.objects.get(id=vehicle_id)
             })
-     else:
+    else:
         return redirect("singin")
      
     
@@ -126,7 +126,28 @@ def contacto(request):
         return render(request, 'contacto.html')
    
 
+def editUserInfo (request):
+    if request.method =='GET':
+        return render (request, 'editUserInfo.html')
+    else:
+     try:
+        if request.method=='POST':
+         user_id = request.user.id  
+         user = User.objects.get(id=user_id)
+        
+         new_username = request.POST['newUsername']
+         new_email = request.POST['newEmail']
+         new_password = request.POST['newPassword']
+        
+         user.username = new_username
+         user.email = new_email
+         user.set_password(new_password)  
+         user.save()
 
+         return redirect('/') 
+     except Exception as e:
+                return HttpResponse(f"Error al editar la informacion: {str(e)}")
+        
 
 
 
