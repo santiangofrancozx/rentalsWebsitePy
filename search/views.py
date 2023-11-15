@@ -56,9 +56,9 @@ def rentCar(request, vehicle_id):
         return render(request, "rent.html", {
             "car": Vehicle.objects.get(id=vehicle_id)
             })
-    
     else:
         return redirect("singin")
+     
     
 def rentCarTime(request, vehicle_id, array1, array2):
     fecha1_int = [int(item) for item in array1.strip('[]').split(', ')]
@@ -85,25 +85,75 @@ def signin(request):
     if request.method == 'GET':
         return render(request, 'login.html')
     else:
-        user = authenticate(
-            request, username=request.POST['email'], password=request.POST['password'])
-        if user is None:
-            return HttpResponse("Error al logear no melo")
-        login(request, user)
-        return redirect('/')
+        try:
+         user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
+         if user is None:
+            return HttpResponse("Revisa que tus credenciales esten correctas")
+         login(request, user)
+         return redirect('/')
+        except Exception as e:
+                return HttpResponse(f"Error al logearse: {str(e)}")
+
+
 
 def signup(request):
     if request.method == 'GET':
         return render(request, 'singup.html')
     else:
         try:
+            print(request.POST)
             user = User.objects.create_user(
-                request.POST["email"], password=request.POST["password"])
+                request.POST["username"],
+                password = request.POST["password"], 
+                first_name = request.POST["name"], 
+                last_name = request.POST["lastname"],
+                email = request.POST["email"])
             user.save()
             login(request, user)
-            return HttpResponse('exito al crear usuario')
-        except:
-            return HttpResponse("algo salio mal")
+            return redirect('/')
+        except Exception as e:
+                return HttpResponse(f"Error al registrar el usuario: {str(e)}")
+
+def reservar(request):
+    if request.method == 'GET':
+        return render(request, 'reservar.html')
+   
+
+
+def contacto(request):
+    if request.method == 'GET':
+        return render(request, 'contacto.html')
+   
+
+def editUserInfo (request):
+    if request.method =='GET':
+        return render (request, 'editUserInfo.html')
+    else:
+     try:
+        if request.method=='POST':
+         user_id = request.user.id  
+         user = User.objects.get(id=user_id)
+        
+         new_username = request.POST['newUsername'] # nombre de usuario
+         new_firstname= request.POST['newName'] # nombre
+         new_Lastname= request.POST['newLastname'] # apellido
+         new_email = request.POST['newEmail'] # email
+         new_password = request.POST['newPassword'] # contra
+        
+         user.username = new_username
+         user.first_name = new_firstname
+         user.last_name = new_Lastname
+         user.email = new_email
+         user.set_password(new_password)  
+         user.save()
+
+         return redirect('/') 
+     except Exception as e:
+                return HttpResponse(f"Error al editar la informacion: {str(e)}")
+        
+
+
 
 @login_required
 def singout(request):

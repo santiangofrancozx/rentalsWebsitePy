@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Información</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="w-full max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <h1 class="text-2xl font-semibold text-center mb-4">Editar Información</h1>
+
+        <form method ="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="currentUsername" class="block text-gray-600">Nombre de Usuario Actual</label>
+                <input type="text" id="currentUsername" name="currentUsername" class="w-full px-3 py-2 border rounded-md bg-gray-100" value={{user.username}} disabled>
+            </div>
+
+            <div class="mb-4">
+                <label for="newUsername" class="block text-gray-600">Nuevo Nombre de Usuario</label>
+                <input type="text" id="newUsername" name="newUsername" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="Nuevo Nombre de Usuario">
+            </div>
+
+            <div class="mb-4">
+                <label for="currentUsername" class="block text-gray-600">Nombre Actual</label>
+                <input type="text" id="currentName" name="currentName" class="w-full px-3 py-2 border rounded-md bg-gray-100" value={{user.first_name}} disabled>
+            </div>
+
+            <div class="mb-4">
+                <label for="newUsername" class="block text-gray-600">Nuevo Nombre</label>
+                <input type="text" id="newName" name="newName" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="Nuevo Nombre de Usuario">
+            </div>
+
+            <div class="mb-4">
+                <label for="currentUsername" class="block text-gray-600">Apellido Actual</label>
+                <input type="text" id="currentLastname" name="currentLastname" class="w-full px-3 py-2 border rounded-md bg-gray-100" value={{user.last_name}} disabled>
+            </div>
+
+            <div class="mb-4">
+                <label for="newUsername" class="block text-gray-600">Nuevo Apellido</label>
+                <input type="text" id="newLastname" name="newLastname" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="Nuevo Nombre de Usuario">
+            </div>
+
+            <div class="mb-4">
+                <label for="currentPassword" class="block text-gray-600">Contraseña Actual</label>
+                <input type="password" id="currentPassword" name="currentPassword" class="w-full px-3 py-2 border rounded-md" value={{user.password}} disabled>
+            </div>
+
+            <div class="mb-4">
+                <label for="newPassword" class="block text-gray-600">Nueva Contraseña</label>
+                <input type="password" id="newPassword" name="newPassword" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="Nueva Contraseña">
+            </div>
+
+            <div class="mb-4">
+                <label for="currentEmail" class="block text-gray-600">Correo Electrónico Actual</label>
+                <input type="email" id="currentEmail" name="currentEmail" class="w-full px-3 py-2 border rounded-md" value={{user.email}} disabled>
+            </div>
+
+            <div class="mb-4">
+                <label for="newEmail" class="block text-gray-600">Nuevo Correo Electrónico</label>
+                <input type="email" id="newEmail" name="newEmail" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="Nuevo Correo Electrónico">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Aplicar Cambios</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
