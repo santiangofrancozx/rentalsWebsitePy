@@ -115,9 +115,28 @@ def signup(request):
         except Exception as e:
                 return HttpResponse(f"Error al registrar el usuario: {str(e)}")
 
-def reservar(request):
+def reservas(request):
     if request.method == 'GET':
-        return render(request, 'reservar.html')
+        if request.user.is_authenticated:
+         usuario = request.user
+        # Obtener las reservas del usuario usando filter en lugar de get
+         reservas_usuario = Reservation.objects.filter(client=usuario)
+
+        # Obtener las IDs de los vehículos asociados a las reservas del usuario
+         ids_vehiculos = [reserva.vehicle_id for reserva in reservas_usuario]
+
+        # Obtener los objetos de vehículo usando las IDs obtenidas
+         vehiculos = Vehicle.objects.filter(id__in=ids_vehiculos)
+
+         return render(request, 'reservas.html', {'usuario': usuario, 'vehiculos': vehiculos})
+        else:
+            # Manejar el caso en que el usuario no está autenticado
+            return render(request, 'login.html')
+       
+def reservar(request):
+    if request.method=='GET':
+        return render(request ,'reservar.html')    
+
    
 
 

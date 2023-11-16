@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User  
 
 # Create your models here.
 
@@ -21,7 +22,7 @@ class Vehicle(models.Model):
     def __str__(self):
         return self.model
 class Reservation(models.Model):
-    client_id = models.IntegerField()  # Aquí puedes enlazar con un modelo de cliente si es necesario
+    client = models.ForeignKey(User, on_delete=models.CASCADE)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     pickup_date = models.DateField()
     return_date = models.DateField()
