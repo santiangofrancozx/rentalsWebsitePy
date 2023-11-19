@@ -7,28 +7,43 @@
     <title>Alquiler de Autos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var dd2 = String(today.getDate()+1).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-            var yyyy = today.getFullYear();
-    
-            today = yyyy + '-' + mm + '-' + dd;
-            today2 = yyyy + '-' + mm + '-' + dd2;
-            document.getElementById("fechaRecogida").setAttribute("min", today);
-    
-            var maxDate = new Date();
-            maxDate.setMonth(maxDate.getMonth() + 3);
-            var dd = String(maxDate.getDate()).padStart(2, '0');
-            var mm = String(maxDate.getMonth() + 1).padStart(2, '0');
-            var yyyy = maxDate.getFullYear();
-    
-            maxDate = yyyy + '-' + mm + '-' + dd;
-            document.getElementById("fechaEntrega").setAttribute("max", maxDate);
-            document.getElementById("fechaEntrega").setAttribute("min", today2);
-        });
-    </script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+      
+        var todayFormatted = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("fechaRecogida").setAttribute("min", todayFormatted);
+      
+        var maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 3);
+        var ddMax = String(maxDate.getDate()).padStart(2, '0');
+        var mmMax = String(maxDate.getMonth() + 1).padStart(2, '0');
+        var yyyyMax = maxDate.getFullYear();
+
+        var minDate = document.getElementById("fechaRecogida").value;
+        console.log(minDate)
+      
+        var maxDateFormatted = yyyyMax + '-' + mmMax + '-' + ddMax;
+        document.getElementById("fechaEntrega").setAttribute("max", maxDateFormatted);
+        document.getElementById("fechaEntrega").setAttribute("min", todayFormatted);
+      
+      });
+      //change the min date in fechaENtrega whit a event listener to fechaRecogida
+      document.addEventListener("input", function(e) {
+        var minDate = new Date(document.getElementById("fechaRecogida").value);
+        console.log(minDate)
+        var dd = String(minDate.getDate()+2).padStart(2, '0');
+        var mm = String(minDate.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = minDate.getFullYear();
+        var minDateFormatted = yyyy + "-" + mm + "-" + dd;
+        console.log("--------------")
+        console.log(minDate)
+        console.log(minDateFormatted)
+        document.getElementById("fechaEntrega").setAttribute("min", minDateFormatted)
+      })
+      </script>
 </head>
 <body class="flex flex-col h-screen justify-between">
     <header class="bg-blue-500 p-4 text-white flex flex-col items-center">
@@ -64,7 +79,6 @@
           <h1 class="text-4xl font-bold">Rentals</h1>
           <ul class="flex space-x-4 justify-center">
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="{% url 'reservar' %}">Reservar</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
             <li><a href="{% url 'singin' %}">Login</a></li>
             <li><a href="{% url 'singup' %}">Singup</a></li>
