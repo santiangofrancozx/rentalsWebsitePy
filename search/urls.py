@@ -18,6 +18,5 @@ urlpatterns = [
     path("thanks/<int:vehicle_id>/<str:array1>/<str:array2>/>", views.rentFinal, name="thanksForRent"),
     path("contacto/", views.contacto, name= "contacto"),
     path("editUserInfo/", views.editUserInfo, name= "editUserInfo"),
-    path("reservas/", views.reservas, name = "reservas"),
-    path("reservar/", views.reservar, name = "reservar")
+    path("reservas/", views.reservas, name = "reservas")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

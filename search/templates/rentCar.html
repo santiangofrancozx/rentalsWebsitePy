@@ -20,13 +20,23 @@
                     <ul class="list-disc list-inside text-gray-700">
                         <li>Modelo: {{ vehicle.model }}</li>
                         <li>Año: {{ vehicle.year }}</li> 
-                        <li>Tipo: Sedán</li>
+                        <li>Tipo: {{vehicle.vehicle_type}}</li>
                         {%if vehicle.availability %}
                         <li>Disponibilidad: Si</li>
                         {% else %}
                         <li>Disponible: No</li>
                         {% endif %}
                         <li>Ubicación: {{ vehicle.location }}</li>
+
+                        {%if vehicle.air %}
+                        <li>Aire acondicionado: Si</li>
+                        {% else %}
+                        <li>Aire acondicionado: No</li>
+                     {% endif %}
+
+                        <li>Kilometraje: {{ vehicle.kilometers }}</li>
+                        <li>Tipo de transmision: {{ vehicle.transmission }}</li>
+                        <li>Numero de puertas: {{ vehicle.doors }}</li>
                     </ul>
                 </div>
                 <div class="mt-4 flex justify-between">
@@ -53,7 +63,7 @@
                 <ul class="list-disc list-inside text-gray-700">
                     <li>Modelo: {{ vehicle.model }}</li>
                     <li>Año: {{ vehicle.year }}</li> 
-                    <li>Tipo: Sedán</li>
+                    <li>Tipo: {{vehicle.vehicle_type}}</li>
                     {%if vehicle.availability %}
                     <li>Disponibilidad: Si</li>
                     {% else %}

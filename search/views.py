@@ -150,10 +150,6 @@ def reservas(request):
             return render(request, 'login.html')
 
 
-def reservar(request):
-    if request.method == 'GET':
-        return render(request, 'reservar.html')
-
 
 def contacto(request):
     if request.method == 'GET':
@@ -214,6 +210,7 @@ def rentFinal(request, vehicle_id, array1, array2):
 
     reservation = Reservation(
         client_id=user_id,
+        price_total=price_total,
         vehicle_id=vehicle_id,
         pickup_date=datetime.strptime(formatted_array1, '%Y-%m-%d').date(),
         return_date=datetime.strptime(formatted_array2, '%Y-%m-%d').date(),

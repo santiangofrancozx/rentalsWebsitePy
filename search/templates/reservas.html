@@ -28,11 +28,6 @@
                     <img src="{{vehicle.img.url }}" alt="Imagen de prueba" class="bg-opacity-0 h-auto">
                     <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
                     <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
-                    {% if vehicle.availability %}
-                    <p class="text-gray-600 my-2">Disponibilidad: Si</p>
-                    {% else %}
-                    <p class="text-gray-600 my-2">Disponibilidad: No</p>
-                    {% endif %}
                     <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
                 </div>
             </a>

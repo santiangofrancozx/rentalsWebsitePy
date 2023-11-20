@@ -22,8 +22,10 @@ class Vehicle(models.Model):
     def __str__(self):
         return self.model
 class Reservation(models.Model):
+    price_total = models.IntegerField()
     client = models.ForeignKey(User, on_delete=models.CASCADE)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     pickup_date = models.DateField()
     return_date = models.DateField()
     pickup_location = models.CharField(max_length=255)
+    
