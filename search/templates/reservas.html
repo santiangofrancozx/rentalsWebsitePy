@@ -22,13 +22,16 @@
         <!-- Ejemplo de un auto rentado con efecto de transición al pasar el mouse -->
         {% if vehiculos %}
             {% for vehicle in vehiculos %}
-            <a href="{% url 'reservas' %}" class="block bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 max-w-100 max-h-100">
+            <a  class="block bg-white rounded-lg shadow-md p-4 max-w-100 max-h-100">
                 <div class="h-full w-full bg-white rounded-lg shadow-md p-4">
                     <h3 class="text-xl font-semibold">{{ vehicle.brand }} - {{ vehicle.model }}</h3>
                     <img src="{{vehicle.img.url }}" alt="Imagen de prueba" class="bg-opacity-0 h-auto">
                     <p class="text-gray-600 my-2">Año: {{ vehicle.year }}</p>
                     <p class="text-gray-600 my-2">Tipo: {{ vehicle.vehicle_type }}</p>
                     <p class="text-gray-600 my-2">Ubicación: {{ vehicle.location }}</p>
+                    <p class="text-gray-600 my-2">Precio total: {{ vehicle.price_total }}</p>
+                    <p class="text-gray-600 my-2">Fecha de recogida: {{ vehicle.pickup_date }}</p>
+                    <p class="text-gray-600 my-2">Fecha de devolucion: {{ vehicle.return_date }}</p>
                 </div>
             </a>
    
@@ -37,10 +40,6 @@
             <p>No hay vehículos reservados.</p>
             <p>{{ vehicle }}</p>  
         {% endif %}
-                
-        
-
-        <!-- Toca cambiar lo de arribita con el bucle con la id del man para ver sus carros reservados -->
 
     </div>
 </body>

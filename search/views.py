@@ -137,14 +137,16 @@ def reservas(request):
         # Obtener las reservas del usuario usando filter en lugar de get
             reservas_usuario = Reservation.objects.filter(client=usuario)
 
-        # Obtener las IDs de los vehículos asociados a las reservas del usuario
-            ids_vehiculos = [
-                reserva.vehicle_id for reserva in reservas_usuario]
+            vehiculos = []
+            for reserva in reservas_usuario:
+                vehiculo = Vehicle.objects.get(id=reserva.vehicle_id)
+                # Agregar información adicional de la reserva al objeto de vehículo
+                vehiculo.price_total = reserva.price_total
+                vehiculo.pickup_date = reserva.pickup_date
+                vehiculo.return_date = reserva.return_date
+                vehiculos.append(vehiculo)
 
-        # Obtener los objetos de vehículo usando las IDs obtenidas
-            vehiculos = Vehicle.objects.filter(id__in=ids_vehiculos)
-
-            return render(request, 'reservas.html', {'usuario': usuario, 'vehiculos': vehiculos})
+            return render(request, 'reservas.html', {'vehiculos': vehiculos})
         else:
             # Manejar el caso en que el usuario no está autenticado
             return render(request, 'login.html')
