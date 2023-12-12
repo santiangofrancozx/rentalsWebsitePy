@@ -29,3 +29,8 @@ class Reservation(models.Model):
     return_date = models.DateField()
     pickup_location = models.CharField(max_length=255)
     
+
+class Comments(models.Model):
+    username =  models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    comment =  models.CharField(max_length=255)

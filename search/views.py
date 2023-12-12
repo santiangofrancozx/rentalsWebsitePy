@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
-from .models import Reservation, Vehicle
+from .models import Reservation, Vehicle , Comments
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -158,6 +158,37 @@ def reservas(request):
 def contacto(request):
     if request.method == 'GET':
         return render(request, 'contacto.html')
+    elif request.method == 'POST':
+        try:
+            # Crea una instancia del modelo Comments con los datos del formulario
+            comment = Comments(
+                username=request.POST["nombre"],
+                email=request.POST["correo"],
+                comment=request.POST["mensaje"]
+            )
+            comment.save()
+        except Exception as e:
+            return HttpResponse(f"Error al registrar el comentario: {str(e)}")
+
+        return redirect('/')
+    else:
+        return HttpResponse("Método HTTP no permitido") 
+
+
+
+
+def showUsers(request):
+    # Recupera todos los usuarios de la base de datos
+    users = User.objects.all()
+    # Renderiza la plantilla con la lista de usuarios
+    return render(request, 'showUsers.html', {'users': users})
+  
+def showComments(request):
+    # Recupera todos los comentarios de la base de datos
+    comments_list = Comments.objects.all()  
+    # Renderiza la plantilla con la lista de comentarios
+    return render(request, 'showComments.html', {'comments': comments_list})
+
 
 
 def editUserInfo(request):

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <!-- Agrega el enlace a tu archivo de estilos de Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <h2 class="text-2xl font-bold mb-4">Lista de Usuarios</h2>
+
+    <div class="overflow-x-auto">
+        <table class="table-auto w-full border-collapse border">
+            <thead>
+                <tr>
+                    <th class="border p-2">Activo</th>
+                    <th class="border p-2">SuperUsuario</th>
+                    <th class="border p-2">Username</th>
+                    <th class="border p-2">Nombre</th>
+                    <th class="border p-2">Apellido</th>
+                    <th class="border p-2">Correo electrónico</th>
+                    <th class="border p-2">Fecha de registro</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in users %}
+                <tr>
+                    {% if usuario.is_active %}
+                    <td class="border p-2">Si</td>
+                    {% else %}
+                    <td class="border p-2">No</td>
+                    {% endif %}
+                    {% if usuario.is_superuser %}
+                    <td class="border p-2">Si</td>
+                    {% else %}
+                    <td class="border p-2">No</td>
+                    {% endif %}
+                    <td class="border p-2">{{ usuario.username }}</td>
+                    <td class="border p-2">{{ usuario.first_name}}</td>
+                    <td class="border p-2">{{ usuario.last_name }}</td>
+                    <td class="border p-2">{{ usuario.email}}</td>
+                    <td class="border p-2">{{ usuario.date_joined }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

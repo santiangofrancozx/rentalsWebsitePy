@@ -19,6 +19,7 @@
         <p class="mb-4">¡Estamos aquí para ayudarte! Por favor, completa el siguiente formulario y te responderemos a la brevedad.</p>
 
         <form method="POST" class="max-w-sm mx-auto">
+            {% csrf_token %}
             <div class="mb-4">
                 <label for="nombre" class="block text-gray-700 font-bold">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required

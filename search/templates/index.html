@@ -48,6 +48,33 @@
 <body class="flex flex-col h-screen justify-between">
     <header class="bg-blue-500 p-4 text-white flex flex-col items-center">
         {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".group").addEventListener("click", function() {
+              this.querySelector(".absolute").classList.toggle("hidden");
+            });
+          });
+        </script>
+        <nav class="flex items-center justify-between p-4 text-white w-full">
+            <h1 class="text-4xl font-bold">Rentals</h1>
+            <div class="relative group">
+            <button class="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300">
+              Usuario
+              <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute hidden group-hover:block mt-2 py-2 w-48 bg-white rounded-lg shadow-lg right-0">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cuenta</a>
+              <a href="{% url "showUsers" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ver usuarios</a>
+              <a href="{% url "showComments" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ver comentarios</a>
+              <a href="{% url "editUserInfo" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Editar Informacion</a>
+              <a href="{% url "singout" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cerrar sesión</a>
+            </div>
+          </div>
+        </nav>
+        {% else %}
         <script>
           document.addEventListener("DOMContentLoaded", function() {
             document.querySelector(".group").addEventListener("click", function() {
@@ -73,6 +100,7 @@
             </div>
           </div>
         </nav>
+        {% endif %}
         {% else %}
         <nav class="flex items-center justify-between p-4 text-white w-full">
           <h1 class="text-4xl font-bold">Rentals</h1>
