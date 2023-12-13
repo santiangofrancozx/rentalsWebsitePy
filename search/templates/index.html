@@ -66,7 +66,7 @@
               </svg>
             </button>
             <div class="absolute hidden group-hover:block mt-2 py-2 w-48 bg-white rounded-lg shadow-lg right-0">
-              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cuenta</a>
+              <a href="{% url "showReservation" %}"  class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Administrar reservas</a>
               <a href="{% url "showUsers" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ver usuarios</a>
               <a href="{% url "showComments" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ver comentarios</a>
               <a href="{% url "editUserInfo" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Editar Informacion</a>
@@ -94,7 +94,7 @@
             <div class="absolute hidden group-hover:block mt-2 py-2 w-48 bg-white rounded-lg shadow-lg right-0">
               <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cuenta</a>
               <a href="{% url "reservas" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mis reservas</a>
-              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mi cartera</a>
+              <a href="{% url "contacto" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Realizar comentarios</a>
               <a href="{% url "editUserInfo" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Editar Informacion</a>
               <a href="{% url "singout" %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Cerrar sesión</a>
             </div>

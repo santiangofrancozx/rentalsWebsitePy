@@ -178,17 +178,27 @@ def contacto(request):
 
 
 def showUsers(request):
-    # Recupera todos los usuarios de la base de datos
+   
     users = User.objects.all()
-    # Renderiza la plantilla con la lista de usuarios
+    
     return render(request, 'showUsers.html', {'users': users})
   
 def showComments(request):
-    # Recupera todos los comentarios de la base de datos
+    
     comments_list = Comments.objects.all()  
-    # Renderiza la plantilla con la lista de comentarios
+    
     return render(request, 'showComments.html', {'comments': comments_list})
 
+def showReservation(request):
+   
+    reservations_list =Reservation.objects.all()  
+    
+    return render(request, 'showReservation.html', {'reservations': reservations_list})
+
+def eliminar_reserva(request, reserva_id):
+    reserva = get_object_or_404(Reservation, pk=reserva_id)
+    reserva.delete()
+    return redirect('/showReservation')
 
 
 def editUserInfo(request):

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <h2 class="text-2xl font-bold mb-4">Lista de reservas</h2>
+
+    <div class="overflow-x-auto">
+        <table class="table-auto w-full border-collapse border">
+            <thead>
+                <tr>
+                    <th class="border p-2">Id</th>
+                    <th class="border p-2">Pickup date</th>
+                    <th class="border p-2">Return date</th>
+                    <th class="border p-2">Pickup location</th>
+                    <th class="border p-2">Vehicle id</th>
+                    <th class="border p-2">Cliente id</th>
+                    <th class="border p-2">Precio total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservations %}
+                <tr>
+                    <td class="border p-2">{{ reserva.id }}</td>
+                    <td class="border p-2">{{ reserva.pickup_date}}</td>
+                    <td class="border p-2">{{ reserva.return_date }}</td>
+                    <td class="border p-2">{{ reserva.pickup_location}}</td>
+                    <td class="border p-2">{{ reserva.vehicle_id}}</td>
+                    <td class="border p-2">{{ reserva.client_id}}</td>
+                    <td class="border p-2">{{ reserva.price_total}}</td>
+                    <td><a href="{% url 'eliminar_reserva' reserva.id %}">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
