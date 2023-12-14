@@ -123,9 +123,13 @@
         <form class="max-w-lg mx-auto p-4 bg-white border rounded shadow-md" method="POST">
             {% csrf_token %}
             {{fomr.as_p}}
-             <div class="mb-4">
-                <label for="lugar" class="block font-semibold">Lugar de Recogida:</label>
-                <input type="text" id="lugar" name="lugar" class="w-full py-2 px-3 border rounded focus:outline-none focus:ring focus:border-blue-300" required>
+            <div class="mb-4">
+              <label for="lugar" class="block font-semibold">Lugar de Recogida:</label>
+              <select id="lugar" name="lugar" class="w-full py-2 px-3 border rounded focus:outline-none focus:ring focus:border-blue-300" required>
+                  <option value="BUGA">BUGA</option>
+                  <option value="TULUA">TULUA</option>
+                  <option value="CALI">CALI</option>
+              </select>
             </div>
 
             <div class="mb-4">
